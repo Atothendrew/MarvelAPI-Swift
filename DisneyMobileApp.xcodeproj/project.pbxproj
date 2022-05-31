@@ -17,6 +17,8 @@
 		4948AA652846A78B0098D54E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948AA3B2846A7880098D54E /* ContentView.swift */; };
 		4948AA662846A78B0098D54E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4948AA3C2846A78B0098D54E /* Assets.xcassets */; };
 		4948AA672846A78B0098D54E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4948AA3C2846A78B0098D54E /* Assets.xcassets */; };
+		4948AA772846ABA30098D54E /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948AA762846ABA30098D54E /* MarvelAPI.swift */; };
+		4948AA782846ABA30098D54E /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948AA762846ABA30098D54E /* MarvelAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		4948AA5A2846A78B0098D54E /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4948AA5E2846A78B0098D54E /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		4948AA602846A78B0098D54E /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		4948AA762846ABA30098D54E /* MarvelAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,7 @@
 				4948AA3A2846A7880098D54E /* DisneyMobileAppApp.swift */,
 				4948AA3B2846A7880098D54E /* ContentView.swift */,
 				4948AA3C2846A78B0098D54E /* Assets.xcassets */,
+				4948AA762846ABA30098D54E /* MarvelAPI.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -299,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4948AA772846ABA30098D54E /* MarvelAPI.swift in Sources */,
 				4948AA642846A78B0098D54E /* ContentView.swift in Sources */,
 				4948AA622846A78B0098D54E /* DisneyMobileAppApp.swift in Sources */,
 			);
@@ -308,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4948AA782846ABA30098D54E /* MarvelAPI.swift in Sources */,
 				4948AA652846A78B0098D54E /* ContentView.swift in Sources */,
 				4948AA632846A78B0098D54E /* DisneyMobileAppApp.swift in Sources */,
 			);
