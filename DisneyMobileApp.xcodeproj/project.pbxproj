@@ -87,6 +87,16 @@
 		494F873D28491F8600C15E29 /* CharacterResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResource.swift; sourceTree = "<group>"; };
 		494F87402849207B00C15E29 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		494F8743284920A700C15E29 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		ABC35358227D30B56659973D /* comic_list_filtered_by_year.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comic_list_filtered_by_year.png; sourceTree = "<group>"; };
+		ABC353F3B9369BA6EA810D93 /* comic_list_default_filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comic_list_default_filter.png; sourceTree = "<group>"; };
+		ABC354BF046BE0661C03E93F /* needs_keys.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = needs_keys.png; sourceTree = "<group>"; };
+		ABC355699C87E9B8CD189AAE /* comic_detail_view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comic_detail_view.png; sourceTree = "<group>"; };
+		ABC35681C48D64CA0448D24D /* api_keys_work.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = api_keys_work.png; sourceTree = "<group>"; };
+		ABC35A9846C28BD9D38F2CF5 /* macos_comic_list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macos_comic_list.png; sourceTree = "<group>"; };
+		ABC35ABF3C2559A6616FB643 /* comic_list_filtered_by_id.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comic_list_filtered_by_id.png; sourceTree = "<group>"; };
+		ABC35F4B74927E0E5B05A91D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		ABC35FA875BAB20B359AFC1D /* character_list_filtered.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character_list_filtered.png; sourceTree = "<group>"; };
+		ABC35FDF4047EC2E9B1F95BE /* entered_keys.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = entered_keys.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +138,8 @@
 				4948AA482846A78B0098D54E /* macOS */,
 				4948AA512846A78B0098D54E /* Tests iOS */,
 				4948AA422846A78B0098D54E /* Products */,
+				ABC35F4B74927E0E5B05A91D /* README.md */,
+				ABC356311BC2F33F8BCC9D19 /* docs */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,6 +229,22 @@
 				494F8743284920A700C15E29 /* Comic.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		ABC356311BC2F33F8BCC9D19 /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				ABC35FDF4047EC2E9B1F95BE /* entered_keys.png */,
+				ABC35FA875BAB20B359AFC1D /* character_list_filtered.png */,
+				ABC353F3B9369BA6EA810D93 /* comic_list_default_filter.png */,
+				ABC355699C87E9B8CD189AAE /* comic_detail_view.png */,
+				ABC354BF046BE0661C03E93F /* needs_keys.png */,
+				ABC35358227D30B56659973D /* comic_list_filtered_by_year.png */,
+				ABC35A9846C28BD9D38F2CF5 /* macos_comic_list.png */,
+				ABC35681C48D64CA0448D24D /* api_keys_work.png */,
+				ABC35ABF3C2559A6616FB643 /* comic_list_filtered_by_id.png */,
+			);
+			path = docs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
