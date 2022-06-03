@@ -7,46 +7,45 @@
 
 import SwiftUI
 
+// Store common image views in global memory
+var notFoundImage = AsyncImage(url: URL(string: "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_xlarge.jpg"))
+var marvelLogoImage = AsyncImage(url: URL(string: "https://i.annihil.us/u/prod/marvel/images/mu/web/2021/marvel_insider-topnav-logo.png"))
 
+// Track Tabbed State
+enum MARVEL_APP_TABS: Int, Codable {
+    case API_KEYS = 1
+    case COMICS = 2
+    case CHARACTERS = 3
+}
 
 struct ContentView: View {
-    
-    @State var comics = [Comic]()
+    @State var pk: String = {
+        UserDefaults.standard.value(forKey: "marvel_app_pk") as? String ?? ""
+    }()
+    @State var ak: String = {
+        UserDefaults.standard.value(forKey: "marvel_app_ak") as? String ?? ""
+    }()
 
+    @State var api: MarvelAPI = MarvelAPI.shared
+    @State var selectedTab: MARVEL_APP_TABS = .API_KEYS
     var body: some View {
-        
-        List(comics) { book in
-            VStack(alignment: .leading) {
-            Text("\(book.title!)")
-                        .font(.title)
-                        .foregroundColor(.red)
-                        .padding(.bottom)
-            HStack{
-                if let description = book.description {
-                    Text("\(description)")
-                                .font(.body)
-                                .fontWeight(.bold)
-                }
-                
-            Text("\(book.resourceURI!)")
-                            .font(.body)
-                            .fontWeight(.semibold)
+        TabView(selection: $selectedTab) {
+            APIKeysInput(ak: $ak, pk: $pk).tabItem {
+                        Image(systemName: "key.icloud.fill")
+                        Text("API Keys")
                     }
-                    Spacer()
-                }
-                if let image = book.thumbnail {
-                    let url = URL(string: image.path.replacingOccurrences(of: "http", with: "https") + "/portrait_xlarge." + image.ext)
-                    
-                    AsyncImage(url: url)
-                    
-                }
-            
-        }.onAppear() {
-            Comic.getComics { (comics) in
-                self.comics = comics ?? []
-            }
+                    .tag(MARVEL_APP_TABS.API_KEYS)
+            ComicsList(pk: $pk, ak: $ak).tabItem {
+                        Image(systemName: "books.vertical.fill")
+                        Text("Comics List")
+                    }
+                    .tag(MARVEL_APP_TABS.COMICS)
+            CharacterList(pk: $pk, ak: $ak).tabItem {
+                        Image(systemName: "person.crop.rectangle.stack.fill")
+                        Text("Character List")
+                    }
+                    .tag(MARVEL_APP_TABS.CHARACTERS)
         }
-        
     }
 }
 

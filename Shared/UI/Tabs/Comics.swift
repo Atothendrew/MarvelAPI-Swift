@@ -1,0 +1,117 @@
+//
+//  Comics.swift
+//  DisneyMobileApp (iOS)
+//
+//  Created by Andrew Williamson on 6/2/22.
+//
+
+import Foundation
+import SwiftUI
+
+struct ComicsList: View {
+    @State var comics = [SerializedComic]()
+    @State private var searchText: String = ComicSearchOptions.name.rawValue
+    @State var searchStyleSelecton: ComicSearchOptions = .name
+    @State var showingFilters: Bool = false
+    @Binding var pk: String
+    @Binding var ak: String
+
+    enum ComicSearchOptions: String, Codable, CaseIterable {
+        case name = "Hulk"
+        case year = "2004"
+        case comic_id = "101383"
+    }
+
+    fileprivate func updateComics() {
+        var queryParams: [URLQueryItem] = []
+        var comicID: String?
+        if searchText != "" {
+            var queryItem: URLQueryItem?
+            switch searchStyleSelecton {
+            case .name:
+                queryItem = URLQueryItem(name: "titleStartsWith", value: searchText)
+                break
+            case .year:
+                queryItem = URLQueryItem(name: "startYear", value: searchText)
+                break
+            case .comic_id:
+                comicID = searchText
+                break
+            }
+            if let queryItem = queryItem {
+                queryParams.append(queryItem)
+            }
+        }
+        let limit = comicID == nil ? 100 : 1
+        Comics.get(resourceId: comicID, limit: limit, queryParams: queryParams) { comics in
+            self.comics = comics ?? []
+        }
+    }
+
+    var body: some View {
+        VStack {
+            if pk == "" || ak == "" {
+                Text("Make sure you have set your keys!")
+            } else {
+                if (showingFilters) {
+                    SearchBar(text: $searchText)
+                    HStack {
+                        Picker("Search Options", selection: $searchStyleSelecton) {
+                            Text("Title Prefix").tag(ComicSearchOptions.name)
+                            Text("Release Year").tag(ComicSearchOptions.year)
+                            Text("Comic ID").tag(ComicSearchOptions.comic_id)
+                        }
+                    }
+                }
+                NavigationView {
+                    List(comics) { book in
+                        NavigationLink {
+                            ComicView(book: book)
+                        } label: {
+                            ComicCell(book: book)
+                        }
+                    }
+                            .onAppear {
+                                updateComics()
+                            }
+                            .onChange(of: searchText) { t in
+                                updateComics()
+                            }
+                            .onChange(of: searchStyleSelecton) { newValue in
+                                if searchText == "" || !ComicSearchOptions.allCases.filter({ op in
+                                            op.rawValue == searchText
+                                        })
+                                        .isEmpty {
+                                    searchText = newValue.rawValue
+                                }
+                                updateComics()
+                            }
+                            .navigationTitle("Comic List")
+                            #if !os(macOS)
+                            .listStyle(
+                                    GroupedListStyle()
+                            )
+                            #endif
+                            .toolbar {
+                                ToolbarItem() {
+                                    Button(showingFilters ? "Hide Filters" : "Filter") {
+                                        showingFilters.toggle()
+                                    }
+                                }
+                            }
+                }
+                        #if !os(macOS)
+                        .navigationViewStyle(.stack)
+                        #endif
+            }
+        }
+    }
+}
+
+struct ComicView_Preview: PreviewProvider {
+    @State static var pk: String = UserDefaults.standard.value(forKey: "marvel_app_pk") as? String ?? ""
+    @State static var ak: String = UserDefaults.standard.value(forKey: "marvel_app_ak") as? String ?? ""
+    static var previews: some View {
+        ComicsList(pk: ComicView_Preview.$pk, ak: ComicView_Preview.$ak)
+    }
+}
