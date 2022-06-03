@@ -11,8 +11,6 @@ import SwiftUI
 struct CharacterList: View {
     @State var characters = [SerializedCharacter]()
     @State var searchText: String = ""
-    @Binding var pk: String
-    @Binding var ak: String
 
     fileprivate func updateCharacters() {
         var queryParams: [URLQueryItem] = []
@@ -26,7 +24,7 @@ struct CharacterList: View {
 
     var body: some View {
         VStack {
-            if pk == "" || ak == "" {
+            if MarvelAPI.shared.privateKey == "" || MarvelAPI.shared.publicKey == "" {
                 Text("Make sure you have set your keys!")
             } else {
                 SearchBar(text: $searchText)
@@ -36,8 +34,7 @@ struct CharacterList: View {
                         ForEach(characters) { character in
                             VStack {
                                 if let thumbnail = character.thumbnail {
-                                    let url = CharacterResource.formattedThumbnailURL(image: thumbnail)
-                                    AsyncImage(url: url) { phase in
+                                    AsyncImage(url: thumbnail.url) { phase in
                                         if let image = phase.image {
                                             image
                                         } else if phase.error != nil {

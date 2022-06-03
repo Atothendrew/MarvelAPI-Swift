@@ -13,15 +13,15 @@ struct ComicsList: View {
     @State private var searchText: String = ComicSearchOptions.name.rawValue
     @State var searchStyleSelecton: ComicSearchOptions = .name
     @State var showingFilters: Bool = false
-    @Binding var pk: String
-    @Binding var ak: String
 
+    /// Keep track of our search options, provide some defaults
     enum ComicSearchOptions: String, Codable, CaseIterable {
         case name = "Hulk"
         case year = "2004"
         case comic_id = "101383"
     }
 
+    /// Call the api with any filters
     fileprivate func updateComics() {
         var queryParams: [URLQueryItem] = []
         var comicID: String?
@@ -50,8 +50,8 @@ struct ComicsList: View {
 
     var body: some View {
         VStack {
-            if pk == "" || ak == "" {
-                Text("Make sure you have set your keys!")
+            if MarvelAPI.shared.privateKey == "" || MarvelAPI.shared.publicKey == "" {
+                Text("Make sure you have set your keys!").accessibilityLabel("noKeysMessage")
             } else {
                 if (showingFilters) {
                     SearchBar(text: $searchText)
@@ -109,9 +109,7 @@ struct ComicsList: View {
 }
 
 struct ComicView_Preview: PreviewProvider {
-    @State static var pk: String = UserDefaults.standard.value(forKey: "marvel_app_pk") as? String ?? ""
-    @State static var ak: String = UserDefaults.standard.value(forKey: "marvel_app_ak") as? String ?? ""
     static var previews: some View {
-        ComicsList(pk: ComicView_Preview.$pk, ak: ComicView_Preview.$ak)
+        ComicsList()
     }
 }

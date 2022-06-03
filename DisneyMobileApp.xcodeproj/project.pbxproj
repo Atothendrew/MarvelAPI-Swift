@@ -25,11 +25,9 @@
 		494F873E28491F8600C15E29 /* CharacterResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873D28491F8600C15E29 /* CharacterResource.swift */; };
 		494F87412849207B00C15E29 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F87402849207B00C15E29 /* Keys.swift */; };
 		494F8744284920A700C15E29 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F8743284920A700C15E29 /* Comic.swift */; };
-		494F8746284920AF00C15E29 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F8745284920AF00C15E29 /* Character.swift */; };
 		4997C38E28498519008A04EE /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F87402849207B00C15E29 /* Keys.swift */; };
 		4997C38F2849851E008A04EE /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873128491DB600C15E29 /* Characters.swift */; };
 		4997C39028498520008A04EE /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F872F28491DAF00C15E29 /* Comics.swift */; };
-		4997C39128498522008A04EE /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F8745284920AF00C15E29 /* Character.swift */; };
 		4997C39228498524008A04EE /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F8743284920A700C15E29 /* Comic.swift */; };
 		4997C39328498529008A04EE /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873628491ECB00C15E29 /* String+MD5.swift */; };
 		4997C3942849852C008A04EE /* CharacterResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873D28491F8600C15E29 /* CharacterResource.swift */; };
@@ -37,6 +35,18 @@
 		4997C39628498530008A04EE /* BaseMarvelResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873928491F2B00C15E29 /* BaseMarvelResource.swift */; };
 		4997C39728498533008A04EE /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948AA762846ABA30098D54E /* MarvelAPI.swift */; };
 		4997C3982849853A008A04EE /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873328491DD000C15E29 /* SearchBar.swift */; };
+		4997C399284A64A4008A04EE /* ComicResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873B28491F6500C15E29 /* ComicResource.swift */; };
+		4997C39A284A64A4008A04EE /* CharacterResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873D28491F8600C15E29 /* CharacterResource.swift */; };
+		4997C39B284A64A4008A04EE /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948AA762846ABA30098D54E /* MarvelAPI.swift */; };
+		4997C39C284A64A4008A04EE /* BaseMarvelResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873928491F2B00C15E29 /* BaseMarvelResource.swift */; };
+		4997C39D284A64AA008A04EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948AA3B2846A7880098D54E /* ContentView.swift */; };
+		4997C39E284A64AA008A04EE /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F872F28491DAF00C15E29 /* Comics.swift */; };
+		4997C39F284A64AA008A04EE /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873128491DB600C15E29 /* Characters.swift */; };
+		4997C3A0284A64AA008A04EE /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873628491ECB00C15E29 /* String+MD5.swift */; };
+		4997C3A2284A64AA008A04EE /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F87402849207B00C15E29 /* Keys.swift */; };
+		4997C3A3284A64AA008A04EE /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F873328491DD000C15E29 /* SearchBar.swift */; };
+		4997C3A4284A64AA008A04EE /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494F8743284920A700C15E29 /* Comic.swift */; };
+		4997C3A5284A64AA008A04EE /* DisneyMobileApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4948AA3A2846A7880098D54E /* DisneyMobileApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +87,6 @@
 		494F873D28491F8600C15E29 /* CharacterResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResource.swift; sourceTree = "<group>"; };
 		494F87402849207B00C15E29 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		494F8743284920A700C15E29 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
-		494F8745284920AF00C15E29 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				494F8743284920A700C15E29 /* Comic.swift */,
-				494F8745284920AF00C15E29 /* Character.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -369,7 +377,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				494F8746284920AF00C15E29 /* Character.swift in Sources */,
 				4948AA772846ABA30098D54E /* MarvelAPI.swift in Sources */,
 				494F8744284920A700C15E29 /* Comic.swift in Sources */,
 				494F873E28491F8600C15E29 /* CharacterResource.swift in Sources */,
@@ -399,7 +406,6 @@
 				4997C39328498529008A04EE /* String+MD5.swift in Sources */,
 				4997C3952849852E008A04EE /* ComicResource.swift in Sources */,
 				4997C38E28498519008A04EE /* Keys.swift in Sources */,
-				4997C39128498522008A04EE /* Character.swift in Sources */,
 				4948AA632846A78B0098D54E /* DisneyMobileApp.swift in Sources */,
 				4997C38F2849851E008A04EE /* Characters.swift in Sources */,
 			);
@@ -409,8 +415,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4997C3A3284A64AA008A04EE /* SearchBar.swift in Sources */,
+				4997C39B284A64A4008A04EE /* MarvelAPI.swift in Sources */,
+				4997C3A2284A64AA008A04EE /* Keys.swift in Sources */,
+				4997C39C284A64A4008A04EE /* BaseMarvelResource.swift in Sources */,
+				4997C3A5284A64AA008A04EE /* DisneyMobileApp.swift in Sources */,
+				4997C39D284A64AA008A04EE /* ContentView.swift in Sources */,
 				4948AA552846A78B0098D54E /* Tests_iOSLaunchTests.swift in Sources */,
+				4997C39F284A64AA008A04EE /* Characters.swift in Sources */,
+				4997C399284A64A4008A04EE /* ComicResource.swift in Sources */,
+				4997C3A4284A64AA008A04EE /* Comic.swift in Sources */,
+				4997C39E284A64AA008A04EE /* Comics.swift in Sources */,
+				4997C3A0284A64AA008A04EE /* String+MD5.swift in Sources */,
 				4948AA532846A78B0098D54E /* Tests_iOS.swift in Sources */,
+				4997C39A284A64A4008A04EE /* CharacterResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +573,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M5M8HHWE22;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -585,6 +604,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M5M8HHWE22;
 				ENABLE_PREVIEWS = YES;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

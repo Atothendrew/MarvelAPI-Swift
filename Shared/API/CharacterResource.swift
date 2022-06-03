@@ -33,6 +33,5 @@ struct SerializedCharacter: Codable, Identifiable {
     let description: String?
     let modified: String?
     let resourceURI: String?
-    //let urls: [URL]?
     let thumbnail: MarvelImage?
 }

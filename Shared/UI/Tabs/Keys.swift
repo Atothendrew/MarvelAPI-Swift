@@ -29,17 +29,18 @@ struct APIKeysInput: View {
                     .font(.headline)
                     .foregroundColor(.green)
                     .padding()
-            TextField("What's the API public key?", text: $ak).padding()
+            TextField("What's the API public key?", text: $ak).accessibilityLabel("akField").padding()
             Text("Please enter your API private key")
                     .font(.headline)
                     .foregroundColor(.green)
                     .padding()
-            SecureField("What's the API private key?", text: $pk).padding()
+            SecureField("What's the API private key?", text: $pk).accessibilityLabel("pkField").padding()
             Spacer()
-            Button(testConnectionButtonText) {
+            Button {
                 testConnectionButtonText = "Testing..."
-                UserDefaults.standard.setValue(ak, forKey: "marvel_app_ak")
-                UserDefaults.standard.setValue(pk, forKey: "marvel_app_pk")
+                let defaults = UserDefaults.standard
+                defaults.setValue(ak, forKey: "marvel_app_ak")
+                defaults.setValue(pk, forKey: "marvel_app_pk")
                 ComicResource().get(limit: 1) { comic in
                     if let comic = comic, !comic.isEmpty {
                         connectionIsTested = true
@@ -47,9 +48,16 @@ struct APIKeysInput: View {
                     } else {
                         connectionIsTested = false
                         testConnectionButtonText = "⚠️ Failed! Check your credentials and try again."
+                        defaults.removeObject(forKey: "marvel_app_ak")
+                        defaults.removeObject(forKey: "marvel_app_pk")
+                        ak = ""
+                        pk = ""
                     }
                 }
+            } label: {
+                Text(testConnectionButtonText).accessibilityLabel("tcButonLabel")
             }
+                    .accessibilityLabel("tcButton")
                     .padding()
         }
     }

@@ -8,13 +8,14 @@
 import Foundation
 import SwiftUI
 
+/// Generic protocol for representing an Endpoint we can call. Tested with Comics and Characters.
 protocol MarvelResource: Codable {
     associatedtype Model: Codable, Identifiable
     var endpoint: API_ENDPOINTS { get }
     func get(resourceId: String?, limit: Int, queryParams: [URLQueryItem]?, completionBlock: @escaping ([Model]?) -> Void)
-    static func formattedThumbnailURL(image: MarvelImage) -> URL?
 }
 
+/// Default implementation of the get that casts the result data type to the proper model object
 extension MarvelResource {
     func get(resourceId: String? = nil, limit: Int = 100, queryParams: [URLQueryItem]? = nil, completionBlock: @escaping ([Model]?) -> Void) {
         var extraQueryItems = [URLQueryItem(name: "limit", value: String(limit))]
@@ -23,26 +24,29 @@ extension MarvelResource {
                 extraQueryItems.append(param)
             }
         }
-        let request = MarvelAPI.getRequestFor(resourceId: resourceId, endpoint: self.endpoint, extraQueryItems: extraQueryItems)
+        let request = MarvelAPI.buildURLRequest(resourceId: resourceId, endpoint: self.endpoint, extraQueryItems: extraQueryItems)
         var responseObject: MarvelResponse<Model>?
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard
                     let data = data,
                     let response = response as? HTTPURLResponse,
                     error == nil
-            else { // check for fundamental networking error
+            else {
                 print("error", error ?? URLError(.badServerResponse))
                 completionBlock(nil)
                 return
             }
-            guard (200...299) ~= response.statusCode else { // check for http errors
+            /// check for http errors
+            guard (200...299) ~= response.statusCode else {
                 print("statusCode should be 2xx, but is \(response.statusCode)")
                 print("response = \(response)")
                 completionBlock(nil)
                 return
             }
             do {
+                /// Decode the json to our associated type
                 responseObject = try JSONDecoder().decode(MarvelResponse<Model>.self, from: data)
+                /// Call our completion block to perform callback operations
                 completionBlock(responseObject?.data.results)
             } catch {
                 print(error)
@@ -54,10 +58,6 @@ extension MarvelResource {
             }
         }
         task.resume()
-    }
-
-    static func formattedThumbnailURL(image: MarvelImage) -> URL? {
-        URL(string: image.path.replacingOccurrences(of: "http", with: "https") + "/portrait_xlarge." + image.ext)
     }
 }
 

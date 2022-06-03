@@ -26,7 +26,6 @@ struct ContentView: View {
         UserDefaults.standard.value(forKey: "marvel_app_ak") as? String ?? ""
     }()
 
-    @State var api: MarvelAPI = MarvelAPI.shared
     @State var selectedTab: MARVEL_APP_TABS = .API_KEYS
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -35,17 +34,17 @@ struct ContentView: View {
                         Text("API Keys")
                     }
                     .tag(MARVEL_APP_TABS.API_KEYS)
-            ComicsList(pk: $pk, ak: $ak).tabItem {
+            ComicsList().tabItem {
                         Image(systemName: "books.vertical.fill")
                         Text("Comics List")
                     }
-                    .tag(MARVEL_APP_TABS.COMICS)
-            CharacterList(pk: $pk, ak: $ak).tabItem {
+            .tag(MARVEL_APP_TABS.COMICS)
+            CharacterList().tabItem {
                         Image(systemName: "person.crop.rectangle.stack.fill")
                         Text("Character List")
                     }
                     .tag(MARVEL_APP_TABS.CHARACTERS)
-        }
+        }.colorScheme(.dark)
     }
 }
 

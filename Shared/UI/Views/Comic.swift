@@ -14,8 +14,7 @@ struct ComicCell: View {
         VStack {
             HStack {
                 if let thumbnail = book.thumbnail {
-                    let url = ComicResource.formattedThumbnailURL(image: thumbnail)
-                    AsyncImage(url: url) { phase in
+                    AsyncImage(url: thumbnail.url) { phase in
                         if let image = phase.image {
                             image
                         } else if phase.error != nil {
@@ -51,7 +50,7 @@ struct ComicView: View {
                 HStack {
                     VStack {
                         Text(book.title!).font(.headline).padding()
-                        AsyncImage(url: ComicResource.formattedThumbnailURL(image: image)) { phase in
+                        AsyncImage(url: image.url) { phase in
                             if let image = phase.image {
                                 image
                             } else if phase.error != nil {
